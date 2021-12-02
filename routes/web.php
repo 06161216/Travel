@@ -23,4 +23,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/posts', 'PostController@store');
     Route::get('/posts', 'SearchController@index');
 });
-Route::get('/app', 'PostController@app');
+Route::get('/video', 'PostController@video');
+
+Route::get('/upload/image', 'ImageController@input');
+//画像ファイルをアップロードする処理のルーティング
+Route::post('/upload/image', 'ImageController@upload');
+//アップロードした画像ファイルを表示するページのルーティング
+Route::get('/output/image', 'ImageController@output');

@@ -25,6 +25,10 @@
                <h2 class='title'>{{ $post->title }}</h2>
                <p class='body'>{{ $post->body }}</p>
                <p class='updated_at'>{{ $post->updated_at }}</p>
+                   @foreach ($post_images as $post_image)
+                    <img src="{{ $post_image->path }}">
+                    <br>
+                @endforeach
            </div>
            <div class='back'>[<a href='/'>戻る</a>]</div>
            <script>

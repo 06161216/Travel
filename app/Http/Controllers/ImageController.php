@@ -2,79 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
-use App\Http\Requests\PostRequest;
+use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Image;
+use App\Post;
 
-class PostController extends Controller
+class ImageController extends Controller
 {
-    public function index(Post $post)
+    public function input()
     {
-        return view('index')->with(['posts' => $post->getPaginateByLimit()]);
+        return view('images.input');
     }
 
-    public function show(Post $post)
-    {
-        $post_id = $post->id;
-        //imagesテーブルからuser_idカラムが変数$user_idと一致するレコード情報を取得し変数$user_imagesに格納する
-        $post_images = $post->images()->get();
-        // $post_images = Image::wherePost_id($post_id)->get();
-        // return view('images.output', ['post_images' => $post_images]);
-        return view('show')->with([
-            'post' => $post,
-            'post_images' => $post_images
-            ]);
-    }
-    
-    public function create()
-    {
-        return view('create');
-    }
-
-    // public function store(PostRequest $request, Post $post)
-    // {
-    //     $input = $request['post'];
-    //     $input += ['user_id' => $request->user()->id];
-    //     $post->fill($input)->save();
-    //     return redirect('/posts/' . $post->id);
-    // }
-
-    public function edit(Post $post)
-    {
-        return view('edit')->with(['post' => $post]);
-    }
-
-    public function update(PostRequest $request, Post $post)
-    {
-        $input_post = $request['post'];
-        $input_post += ['user_id' => $request->user()->id];    //この行を追加
-        $post->fill($input_post)->save();
-        return redirect('/posts/' . $post->id);
-    }
-
-    public function destroy(Post $post)
-    {
-        $post->delete();
-        return redirect('/');
-    }
-
-    public function video()
-    {
-        return view('video');
-    }
-
-    public function store(PostRequest $request, Post $post)
-    {
-        $input = $request['post'];
-        $input += ['user_id' => $request->user()->id];
-        $post = Post::create([
-                'title' => $input['title'],
-                'body' => $input['body'],
-                'user_id' => $input['user_id']
-            ]);
-        
+    public function upload(Request $request, Post $post)
+    {        
         $this->validate($request, [
             'file' => [
                 // 必須
@@ -95,8 +38,8 @@ class PostController extends Controller
             //S3へのファイルアップロード処理の時の情報が格納された変数$upload_infoを用いてアップロードされた画像へのリンクURLを変数$pathに格納する
             $path = Storage::disk('s3')->url($upload_info);
             //現在ログイン中のユーザIDを変数$user_idに格納する
-            // $post_id = Post::id();
             $post_id = $post->id;
+            // $post_id = $post->id;
             //モデルファイルのクラスからインスタンスを作成し、オブジェクト変数$new_image_dataに格納する
             $new_image_data = new Image();
             //プロパティ(静的メソッド)user_idに変数$user_idに格納されている内容を格納する
@@ -106,13 +49,12 @@ class PostController extends Controller
             //インスタンスの内容をDBのテーブルに格納する
             $new_image_data->save();
 
-            // return redirect('posts/');
-            return redirect('/posts/' . $post->id);
+            return redirect('/');
         }else{
-            return redirect('/posts/' . $post->id);
+            return redirect('/upload/image');
         }
+        
     }
-
     public function output(Post $post)
     {
         //現在ログイン中のユーザIDを変数$user_idに格納する
@@ -123,4 +65,3 @@ class PostController extends Controller
         return view('images.output', ['post_images' => $post_images]);
     }
 }
-

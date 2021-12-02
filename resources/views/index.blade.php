@@ -19,6 +19,7 @@
             </div>
             <input type="submit" value="検索" class="btn btn-info">
         </form>
+        <p class='video'>[<a href='/video'>ビデオチャット</a>]</p>
         <p class='create'>[<a href='/posts/create'>投稿する</a>]</p>
         <div class='posts'>
             @if($posts->count())
@@ -27,6 +28,10 @@
                         <small class='text-secondary'>written by {{ $post->user->name }}</small>
                         <a href='/posts/{{ $post->id }}'><h2 class='title'>{{ $post->title }}</h2></a>
                         <p class='p-2'>{{ $post->body }}</p>
+                        @foreach ($post->images as $post_image)
+                            <img src="{{ $post_image->path }}">
+                            <br>
+                        @endforeach
                     </div>
                 @endforeach
                     @else
