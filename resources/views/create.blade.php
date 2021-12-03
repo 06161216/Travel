@@ -13,7 +13,7 @@
     </head>
     <body>
        <h1>投稿</h1>
-       <form action="/posts" method="POST">
+           <form action="/posts" method="POST" enctype="multipart/form-data">
            {{ csrf_field() }}
            <div class="title">
                <h2>Title</h2>
@@ -25,8 +25,11 @@
                <textarea name="post[body]" placeholder="本文">{{ old('post.body') }}</textarea>
                <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
            </div>
+                @csrf
+                <label for="photo">画像ファイル:</label>
+                <input type="file" class="form-control" name="file">
+                <br>
            <input type="submit" value ="投稿する"/>
-
            <div class='back'>[<a href='/'>戻る</a>]</div>
     </body>
     @endsection

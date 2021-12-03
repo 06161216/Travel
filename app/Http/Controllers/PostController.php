@@ -49,9 +49,9 @@ class PostController extends Controller
         return redirect('/');
     }
 
-    public function app()
+    public function video()
     {
-        return view('app');
+        return view('video');
     }
 }
 
