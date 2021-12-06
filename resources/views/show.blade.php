@@ -21,14 +21,24 @@
            <p class='delete'>[<span onclick="return deletePost(this);">削除</span>]</p>
        </form>
            <div class='post'>
+
+               <form action = "/reaction" method="POST">
+                    @csrf
+                    <input type="hidden" name="to_user_id" value="{{ $post->user->id }}">
+                    <input type="hidden" name="status" value="1">
+                    <button class='good' type=submit>旅行をリクエストする</button>
+                </form>
+
                <small>written by {{ $post->user->name }}</small>
                <h2 class='title'>{{ $post->title }}</h2>
                <p class='body'>{{ $post->body }}</p>
                <p class='updated_at'>{{ $post->updated_at }}</p>
-                   @foreach ($post_images as $post_image)
-                    <img src="{{ $post_image->path }}">
+
+               @foreach ($post->images as $post_image)
+                    <img src="{{ $post_image->path }}" height="200" width="400">
                     <br>
                 @endforeach
+
            </div>
            <div class='back'>[<a href='/'>戻る</a>]</div>
            <script>

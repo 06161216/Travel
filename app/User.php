@@ -45,4 +45,15 @@ class User extends Authenticatable
     // {
     //     return $this->hasMany('App\Image');
     // }
+
+    // public function followUsers()
+    // {
+    //     return $this->belongsToMany('App\User', 'reactions', 'to_user_id', 'from_user_id');
+    // }
+
+    // // フォロー→フォロワー
+    // public function follows()
+    // {
+    //     return $this->belongsToMany('App\User', 'reactions', 'from_user_id', 'to_user_id');
+    // }
 }
