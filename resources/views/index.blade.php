@@ -19,27 +19,29 @@
             </div>
             <input type="submit" value="検索" class="btn btn-info">
         </form>
-        <p class='video'>[<a href='/video'>ビデオチャット</a>]</p>
+        {{--<p class='video'>[<a href='/video'>ビデオチャット</a>]</p>--}}
         <p class='myPage'>[<a href='/myPage'>マイページ</a>]</p>
+        @can('supplier')
         <p class='create'>[<a href='/posts/create'>投稿する</a>]</p>
+        @endcan
 
         <div class='posts'>
             @if($posts->count())
                 @foreach ($posts as $post)
                     <div class='border my-2 p-2'>
+                        @can('traveler')
+                            <form action = "/reaction" method="POST">
+                            @csrf
+                            <input type="hidden" name="to_user_id" value="{{ $post->user->id }}">
+                            <input type="hidden" name="status" value="1">
+                            <button class='good' type=submit>旅行をリクエストする</button>
+                            </form>
+                        @endcan
                         <small class='text-secondary'>written by {{ $post->user->name }}</small>
                         <a href='/posts/{{ $post->id }}'><h2 class='title'>{{ $post->title }}</h2></a>
                         <p class='p-2'>{{ $post->body }}</p>
-
-                        <form action = "/reaction" method="POST">
-                        @csrf
-                        <input type="hidden" name="to_user_id" value="{{ $post->user->id }}">
-                        <input type="hidden" name="status" value="1">
-                        <button class='good' type=submit>旅行をリクエストする</button>
-                        </form>
-
                         @foreach ($post->images as $post_image)
-                            <img src="{{ $post_image->path }}" height="" width="">
+                            <img src="{{ $post_image->path }}" height="200" width="400">
                             <br>
                         @endforeach
                     </div>

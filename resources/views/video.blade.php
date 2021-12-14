@@ -13,6 +13,5 @@
  <input id="their-id"></input>
  <button id="make-call">発信</button><br>
  <video id="their-video" width="800px" autoplay muted playsinline></video>
- <!--<div id="app"></div>-->
 </body>
 </html>

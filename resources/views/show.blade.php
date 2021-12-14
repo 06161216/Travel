@@ -13,6 +13,7 @@
     </head>
     <body>
        <h1>投稿</h1
+       @can('supplier')
        <p class='edit'>[<a href="/posts/{{ $post->id }}/edit">編集する</a>]</p>
        <form action="/posts/{{ $post->id }}" id="form_delete" method="post">
            {{ csrf_field() }}
@@ -20,15 +21,16 @@
            <input type="submit" style="display:none">
            <p class='delete'>[<span onclick="return deletePost(this);">削除</span>]</p>
        </form>
+       @endcan
            <div class='post'>
-
-               <form action = "/reaction" method="POST">
-                    @csrf
-                    <input type="hidden" name="to_user_id" value="{{ $post->user->id }}">
-                    <input type="hidden" name="status" value="1">
-                    <button class='good' type=submit>旅行をリクエストする</button>
-                </form>
-
+                   @can('traveler')
+                   <form action = "/reaction" method="POST">
+                        @csrf
+                        <input type="hidden" name="to_user_id" value="{{ $post->user->id }}">
+                        <input type="hidden" name="status" value="1">
+                        <button class='good' type=submit>旅行をリクエストする</button>
+                    </form>
+                    @endcan
                <small>written by {{ $post->user->name }}</small>
                <h2 class='title'>{{ $post->title }}</h2>
                <p class='body'>{{ $post->body }}</p>

@@ -21,9 +21,4 @@ class Reaction extends Model
     {
         return $this->belongsTo('App\User', 'to_user_id', 'id');
     }
-    // public function User()
-    // {
-    //     return $this->hasMany('App\User', 'to_user_id', 'id');
-    // }
-    
 }

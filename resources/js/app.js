@@ -13,3 +13,6 @@ require('./bootstrap');
  */
 
 require('./components/Video');
+
+// require('./components/Example');
+// require('./components/Form');

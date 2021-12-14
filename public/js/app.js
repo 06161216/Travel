@@ -84776,7 +84776,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
-__webpack_require__(/*! ./components/Video */ "./resources/js/components/Video.js");
+__webpack_require__(/*! ./components/Video */ "./resources/js/components/Video.js"); // require('./components/Example');
+// require('./components/Form');
 
 /***/ }),
 
@@ -84841,10 +84842,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var skyway_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! skyway-js */ "./node_modules/skyway-js/dist/skyway.js");
 /* harmony import */ var skyway_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(skyway_js__WEBPACK_IMPORTED_MODULE_2__);
 
- // const Peer = require('skyway-js');
-// const peer = new Peer({
-//     key: '64fabda0-be9f-4188-99f4-658ade34b936'
-// });
 
 
 var peer = new skyway_js__WEBPACK_IMPORTED_MODULE_2___default.a({
