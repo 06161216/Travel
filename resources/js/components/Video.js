@@ -1,10 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// const Peer = require('skyway-js');
-// const peer = new Peer({
-//     key: '64fabda0-be9f-4188-99f4-658ade34b936'
-// });
 import Peer from 'skyway-js';
 const peer = new Peer({
     key: '64fabda0-be9f-4188-99f4-658ade34b936',

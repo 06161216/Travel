@@ -101,6 +101,7 @@ class PostController extends Controller
     public function video()
     {
         return view('video');
+        // Redirect::away('video');
     }
 }
 

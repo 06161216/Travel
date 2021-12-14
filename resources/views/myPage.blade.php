@@ -17,11 +17,12 @@
                 <form action="matching" method="POST">
                 @csrf
                     @if( $matchingId->fromUser->id == Auth::id())
-                        <p>{{ $matchingId->toUser->name }} とマッチング中！</p>
+                        <p>{{ $matchingId->toUser->name }} とマッチング中</p>
+                        <button type='submit'><a href='/chat/{{$matchingId->toUser->id}}'>チャット</a></button>
                     @elseif($matchingId->toUser->id == Auth::id())
-                        <p>{{ $matchingId->fromUser->name }} とマッチング中！</p>
+                        <p>{{ $matchingId->fromUser->name }} とマッチング中</p>
+                        <button type='submit'><a href='/chat/{{$matchingId->fromUser->id}}'>チャット</a></button>
                     @endif
-                <button type='submit'>チャット</button>
                 </form>
             @endforeach
         </div>

@@ -25,6 +25,14 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // 「体験者」だけに適用
+        Gate::define('traveler', function ($user) {
+            return ($user->permission_id == 1);
+        });
+
+        // 「提供者」に適用
+        Gate::define('supplier', function ($user) {
+            return ($user->permission_id == 2);
+        });
     }
 }
