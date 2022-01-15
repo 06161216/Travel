@@ -6,11 +6,11 @@
 ####  テスト用アカウント  
 
 ・トラベラー  
-&emsp;&ensp;メールアドレス：  
-&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パスワード：  
+&emsp;&ensp;メールアドレス：traveler@gmail.com  
+&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パスワード：00000000  
 ・ガイド  
-&emsp;&ensp;メールアドレス：  
-&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パスワード：  
+&emsp;&ensp;メールアドレス：guide@gmail.com  
+&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パスワード：00000000  
 
 # 概要
 コロナ禍の影響で旅行をする機会が大きく減り、旅行者と観光地の人々共に旅行という機会を失いました。それと同時にオンラインで行えることも格段に増えた昨今で、旅行の新たな形としてオンライン旅行を考えました。これは、コロナのためでもありますが、今後通常に旅行が出来るようになっても、時間が無い人に向けて使ってもらえるようなサービスになればという思いで制作しました。
